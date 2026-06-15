@@ -9,6 +9,11 @@ const config: Config = {
   tagline: 'Learnings and workflows for modern AI development',
   favicon: 'img/incrementic-signal.svg',
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
