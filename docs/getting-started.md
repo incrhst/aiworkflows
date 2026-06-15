@@ -47,7 +47,46 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ---
 
-## 3. Install `headroom-ai` via `uv`
+## 3. Install Node.js & npm (Node Package Manager)
+
+**Node.js** is an open-source JavaScript runtime environment, and **npm** is the default package manager bundled with it. Since many developer agent tools (like `claude-code` or `hermes-agent`) run on Node, setting up Node.js & npm is essential.
+
+### Option A: Standard Installation via Homebrew (Recommended)
+If you have Homebrew installed, you can set up Node and npm with a single command:
+```bash
+brew install node
+```
+
+### Option B: Node Version Manager (For managing multiple environments)
+If you need to work with different Node versions or want to avoid using `sudo` for global package installs, use **`fnm`** (Fast Node Manager):
+
+1. Install `fnm` via Homebrew:
+   ```bash
+   brew install fnm
+   ```
+
+2. Add the environment setup to your shell configuration (e.g. `~/.zshrc` or `~/.bashrc`):
+   ```bash
+   # Add to ~/.zshrc (or ~/.bashrc if using bash)
+   echo 'eval "$(fnm env --use-on-cd)"' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+3. Install the current Long-Term Support (LTS) release of Node.js:
+   ```bash
+   fnm install --lts
+   ```
+
+### Verify your installation:
+Confirm that both Node.js and npm are installed and accessible in your shell:
+```bash
+node -v
+npm -v
+```
+
+---
+
+## 4. Install `headroom-ai` via `uv`
 
 Instead of installing packages globally using `pip install` (which can cause package version conflicts), we will use `uv tool` to run and manage `headroom-ai` inside a sandboxed environment.
 
@@ -67,7 +106,7 @@ Instead of installing packages globally using `pip install` (which can cause pac
 
 ---
 
-## 4. Run your first Wrapped Command
+## 5. Run your first Wrapped Command
 
 Once `headroom-ai` is installed and in your shell `PATH`, you can use it to wrap commands (e.g., the Claude CLI or other developer tools):
 
