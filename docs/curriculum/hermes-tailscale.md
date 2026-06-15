@@ -61,20 +61,42 @@ graph LR
 
 ## Step 2: Install Hermes Agent & WebUI
 
-The **Hermes Agent** runs persistently on your server, hosting a dashboard (WebUI) to track runs, inspect files, and review suggestions.
+Setting up the server environment involves installing the core **Hermes Agent** and then building the **Hermes WebUI** (a lightweight browser dashboard to manage your AI sessions).
 
-1. Clone and install the Hermes WebUI repository:
+### 1. Install the Core Hermes Agent
+Run the official installer command to install the core agent:
+```bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+```
+
+### 2. Install and Build the WebUI
+Clone the lightweight python/web interface wrapper and compile the frontend:
+
+1. Clone the web dashboard repository:
    ```bash
-   git clone https://github.com/nousresearch/hermes-agent.git
-   cd hermes-agent
-   npm install
+   git clone https://github.com/sanchomuzax/hermes-webui.git
+   cd hermes-webui
    ```
 
-2. Configure the host environment to bind only to localhost or your Tailscale IP (to prevent public exposure):
+2. Create an isolated Python virtual environment and install the package:
    ```bash
-   # Create a local environment configuration
-   echo "HOST=0.0.0.0" >> .env
-   echo "PORT=8080" >> .env
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -e .
+   ```
+
+3. Compile the frontend Vite assets:
+   ```bash
+   cd frontend
+   npm install
+   npx vite build
+   cd ..
+   ```
+
+4. Configure the server variables. Create a `.env` file in the root of the `hermes-webui` directory:
+   ```bash
+   HOST=0.0.0.0
+   PORT=8080
    ```
    > [!NOTE]
    > Binding to `0.0.0.0` inside your server makes it listen on all interfaces. However, because you do not open port `8080` on your public cloud firewall (e.g., AWS Security Groups or UFW), it will **only** be reachable by devices connected to your encrypted Tailscale network.
@@ -116,9 +138,13 @@ While Hermes manages context, scheduling, and chat surfaces, it delegates comple
 
 ## Step 4: Access Your Agent Remotely
 
-Once the server is running, launch the Hermes agent server:
+Once the installation is complete, launch the WebUI server:
 ```bash
-npm run start
+# Make sure your python virtual environment is active
+source venv/bin/activate
+
+# Launch the server
+hermes-webui
 ```
 
 Now, from your laptop, tablet, or phone (with Tailscale turned on):
