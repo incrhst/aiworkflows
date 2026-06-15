@@ -1,0 +1,89 @@
+{
+  "_schema": "incrementic-brand/1.0",
+  "_source": "https://incrementic.com/brand",
+  "organisation": {
+    "name": "Incrementic",
+    "legal_name": "Incrementic Limited",
+    "location": "Kingston, Jamaica",
+    "website": "https://incrementic.com"
+  },
+  "essence": {
+    "tagline": "the shortest distance to your next big thing",
+    "mantra": "Learn. Build.",
+    "key_message": "Incurable curiosity, always looking for ways to make things better.",
+    "philosophy": "people over pixels — technology in service of human outcomes"
+  },
+  "colour": {
+    "primary": { "name": "Incrementic Red", "hex": "#EA5148", "rgb": [234,81,72], "cmyk": [0,91,100,0], "pms": "3556 U" },
+    "neutral":  { "name": "Charcoal",        "hex": "#4C4E56", "rgb": [76,78,86],   "cmyk": [79,61,24,70], "pms": "Black 6 U" },
+    "ground":   { "name": "White",            "hex": "#FFFFFF", "rgb": [255,255,255] }
+  },
+  "logo": {
+    "minimum_width_px": 100,
+    "minimum_width_mm": 30,
+    "clear_space": "width of the letter t",
+    "minimum_contrast_ratio": "3:1",
+    "variations": [
+      { "id": "main",  "colour": "red",      "background": "white or light", "file_svg": "assets/incrementic-main-logo.svg",  "file_png": "assets/incrementic-main-logo.png" },
+      { "id": "dark",  "colour": "charcoal", "background": "light",          "file_svg": "assets/incrementic-dark-logo.svg",  "file_png": "assets/incrementic-dark-logo.png" },
+      { "id": "white", "colour": "white",    "background": "dark",           "file_svg": "assets/incrementic-white-logo.svg", "file_png": "assets/incrementic-white-logo.png" }
+    ],
+    "rules": {
+      "allowed_colours": ["#EA5148","#4C4E56","#FFFFFF"],
+      "forbidden": ["recolour","squash","stretch","rotate","box in container","noisy background","inline in sentence"]
+    }
+  },
+  "signal": {
+    "name": "Incrementic signal",
+    "colour": "#EA5148",
+    "file_svg": "assets/incrementic-signal.svg",
+    "file_png": "assets/incrementic-signal.png",
+    "minimum_width_on_colour_px": 300,
+    "minimum_width_on_colour_mm": 46,
+    "minimum_width_on_white_px": 16,
+    "minimum_width_on_white_mm": 6,
+    "clear_space": "half the symbol width",
+    "usage_note": "Works strongest on black or charcoal apparel."
+  },
+  "slogan_mark": {
+    "name": "Shortest Distance Mark",
+    "slogan": "the shortest distance to your next big thing",
+    "minimum_width_px": 490,
+    "minimum_width_mm": 75,
+    "clear_space": "height of the word shortest",
+    "minimum_opacity": 0.7,
+    "variations": [
+      { "colour": "red",      "file_svg": "assets/incrementic-mark-red.svg" },
+      { "colour": "white",    "file_svg": "assets/incrementic-mark-white.svg" },
+      { "colour": "charcoal", "file_svg": "assets/incrementic-mark-charcoal.svg" }
+    ]
+  },
+  "tokens": {
+    "css": ":root{--incrementic-red:#EA5148;--incrementic-charcoal:#4C4E56;--incrementic-white:#FFFFFF;--color-accent:var(--incrementic-red);--color-text:var(--incrementic-charcoal);--color-bg:var(--incrementic-white);}",
+    "tailwind": {"incrementic":{"red":"#EA5148","charcoal":"#4C4E56","white":"#FFFFFF"}},
+    "json_tokens": {"color":{"brand":{"red":{"value":"#EA5148"},"charcoal":{"value":"#4C4E56"},"white":{"value":"#FFFFFF"}}}}
+  },
+  "voice": {
+    "principles": ["plain over clever","curious and forward-moving","brief","honest","people over pixels"],
+    "avoid": ["hype words","hedging filler","jargon walls","passive voice"],
+    "example_good": "The moment a member first pays you.",
+    "example_bad": "The payment touchpoint."
+  },
+  "naming": {
+    "company": "Incrementic",
+    "legal": "Incrementic Limited",
+    "sub_brand_pattern": "{Product} by Incrementic",
+    "products": ["QRtick","Member Access OS","Smart Park OS"],
+    "methodology": "Shape & Ship",
+    "brand_element_names": {
+      "symbol": "Incrementic signal",
+      "slogan_lockup": "Shortest Distance Mark"
+    }
+  },
+  "assets": {
+    "kit_page": "assets.html",
+    "download_all_zip": "incrementic-assets.zip",
+    "brand_skill_zip": "incrementic-brand-skill.zip",
+    "brand_profile_doc": "https://docs.google.com/document/d/1MlmZoethW2KpVh-5IPiN91giqNX-vlxl5dlLzH_erMA/preview"
+  }
+}

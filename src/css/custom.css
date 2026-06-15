@@ -1,30 +1,154 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Fonts */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'IBM Plex Mono', monospace;
+  --ifm-heading-font-family: 'Sora', system-ui, -apple-system, sans-serif;
+
+  /* Brand Colors */
+  --incrementic-red: #EA5148;
+  --incrementic-charcoal: #4C4E56;
+  --incrementic-white: #FFFFFF;
+  --incrementic-ink: #2B2C31;
+  --incrementic-hair: #E6E6E8;
+  --incrementic-soft: #FAFAFA;
+
+  /* Infima primary overrides (Incrementic Red shades) */
+  --ifm-color-primary: var(--incrementic-red);
+  --ifm-color-primary-dark: #d63f36;
+  --ifm-color-primary-darker: #ca332a;
+  --ifm-color-primary-darkest: #a8241d;
+  --ifm-color-primary-light: #ee6f67;
+  --ifm-color-primary-lighter: #f17e77;
+  --ifm-color-primary-lightest: #f6a6a1;
+
+  --ifm-background-color: var(--incrementic-white);
+  --ifm-background-flat-color: var(--incrementic-soft);
+  --ifm-text-color: var(--incrementic-charcoal);
+  --ifm-color-emphasis-300: var(--incrementic-hair);
+
+  --ifm-code-font-size: 90%;
+  --docusaurus-highlighted-code-line-bg: rgba(234, 81, 72, 0.08);
+
+  /* Layout and other custom variables */
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
+  --ifm-footer-background-color: var(--incrementic-ink);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Infima primary overrides (Adjusted Red for better accessibility in Dark Mode) */
+  --ifm-color-primary: #f06a62;
+  --ifm-color-primary-dark: #ee5148;
+  --ifm-color-primary-darker: #eb443a;
+  --ifm-color-primary-darkest: #dd291e;
+  --ifm-color-primary-light: #f3847e;
+  --ifm-color-primary-lighter: #f5918c;
+  --ifm-color-primary-lightest: #f9b7b3;
+
+  --ifm-background-color: var(--incrementic-ink);
+  --ifm-background-flat-color: #212226;
+  --ifm-text-color: #e3e3e6;
+  --ifm-color-emphasis-300: #3e4046;
+
+  --docusaurus-highlighted-code-line-bg: rgba(234, 81, 72, 0.2);
+  --ifm-navbar-background-color: rgba(43, 44, 49, 0.85);
+}
+
+/* Translucent Navbar with glassmorphism */
+.navbar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ifm-background-flat-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--incrementic-charcoal);
+}
+
+/* Modern Typography Tweaks */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ifm-heading-color);
+}
+
+/* Interactive elements & micro-animations */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 81, 72, 0.15);
+}
+
+.button--secondary:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Clean sidebar styling */
+.menu__link {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.menu__link--active {
+  background-color: rgba(234, 81, 72, 0.08) !important;
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .menu__link--active {
+  background-color: rgba(234, 81, 72, 0.18) !important;
+}
+
+/* Footer Styling */
+.footer {
+  border-top: 1px solid #3e4046;
+  background-color: var(--incrementic-ink) !important;
+  color: #c4c4c7;
+}
+
+.footer__title {
+  color: var(--incrementic-white) !important;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 600;
+}
+
+.footer__link-item {
+  color: #9a9aa0 !important;
+  transition: color 0.15s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--incrementic-red) !important;
+  text-decoration: none;
+}
+
+.footer__copyright {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.78rem;
+  color: #9a9aa0;
+  margin-top: 2rem;
 }

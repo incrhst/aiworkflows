@@ -5,9 +5,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'AI Workflows',
+  title: 'AI Workflows by Incrementic',
   tagline: 'Learnings and workflows for modern AI development',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/incrementic-signal.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -72,8 +72,9 @@ const config: Config = {
     navbar: {
       title: 'AI Workflows',
       logo: {
-        alt: 'AI Workflows Logo',
-        src: 'img/logo.svg',
+        alt: 'Incrementic Logo',
+        src: 'img/incrementic-main-logo.svg',
+        srcDark: 'img/incrementic-white-logo.svg',
       },
       items: [
         {
@@ -121,7 +122,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} AI Workflows. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Incrementic Limited. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
