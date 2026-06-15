@@ -47,8 +47,9 @@ As a Shaper, you establish boundaries. Agents are extremely fast at writing code
 ### Phase 2: Shipper (Agent)
 As a Shipper, the agent executes the instruction set. It reads the files, generates the diff blocks, runs the compilers, and validates that the solution matches the provided constraints.
 
-> [!TIP]
-> **Avoid Micromanagement:** Instead of telling an agent *how* to write every line of code, shape the input files, dependencies, and lint rules, then let the agent figure out the syntax and structure.
+:::tip Avoid Micromanagement
+Instead of telling an agent *how* to write every line of code, shape the input files, dependencies, and lint rules, then let the agent figure out the syntax and structure.
+:::
 
 ---
 

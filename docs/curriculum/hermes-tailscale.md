@@ -98,8 +98,9 @@ Clone the lightweight python/web interface wrapper and compile the frontend:
    HOST=0.0.0.0
    PORT=8080
    ```
-   > [!NOTE]
-   > Binding to `0.0.0.0` inside your server makes it listen on all interfaces. However, because you do not open port `8080` on your public cloud firewall (e.g., AWS Security Groups or UFW), it will **only** be reachable by devices connected to your encrypted Tailscale network.
+   :::note
+   Binding to `0.0.0.0` inside your server makes it listen on all interfaces. However, because you do not open port `8080` on your public cloud firewall (e.g., AWS Security Groups or UFW), it will **only** be reachable by devices connected to your encrypted Tailscale network.
+   :::
 
 3. **Configure API Keys in `config.yaml`**:
    Hermes looks for providers and key settings in the configuration file located at `~/.hermes/config.yaml`. Open this file and specify Anthropic as your provider:
@@ -187,8 +188,9 @@ On macOS, Tailscale runs as a **Network Extension**.
 
 ## Best Practices & Security
 
-> [!WARNING]
-> Because Claude Code and Hermes have full read/write terminal access, exposing this portal to the open internet is extremely hazardous. Always follow these rules:
+:::warning
+Because Claude Code and Hermes have full read/write terminal access, exposing this portal to the open internet is extremely hazardous. Always follow these rules:
+:::
 
 * **No Port Forwarding:** Never open port `8080` in UFW, AWS Security Groups, or router settings. Rely exclusively on Tailscale for incoming traffic.
 * **Enable Tailscale HTTPS:** In your Tailscale settings, enable HTTPS certificates to encrypt traffic between your client device and the Hermes WebUI.

@@ -39,8 +39,9 @@ Always ensure that `.env` is listed in your project's `.gitignore` file. This pr
 .env.development.local
 ```
 
-> [!CAUTION]
-> **Secret Exposure:** If you accidentally commit a `.env` containing active API keys to GitHub, Anthropic and other providers will automatically detect the leak and instantly revoke your keys to prevent abuse.
+:::danger Secret Exposure
+If you accidentally commit a `.env` containing active API keys to GitHub, Anthropic and other providers will automatically detect the leak and instantly revoke your keys to prevent abuse.
+:::
 
 ---
 

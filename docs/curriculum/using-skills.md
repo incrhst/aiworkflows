@@ -4,8 +4,9 @@ sidebar_position: 2
 
 # Using AI Skills
 
-> [!NOTE]
-> This content is a work in progress and is updated regularly as AI steering methodologies evolve.
+:::note
+This content is a work in progress and is updated regularly as AI steering methodologies evolve.
+:::
 
 In the **Shape & Ship** paradigm, the primary mechanism for steering an agentic AI developer is through **AI Skills**.
 

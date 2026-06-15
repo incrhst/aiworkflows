@@ -4,8 +4,9 @@ sidebar_position: 3
 
 # Creating AI Skills
 
-> [!NOTE]
-> This content is a work in progress and is updated regularly as AI steering methodologies evolve.
+:::note
+This content is a work in progress and is updated regularly as AI steering methodologies evolve.
+:::
 
 Creating an **AI Skill** is the process of writing machine-readable documentation that establishes styling, architecture, and tool constraints for LLM agents. 
 
@@ -52,10 +53,10 @@ Provide clear, actionable rules. Avoid vague instructions like *"write clean cod
 
 ### Step 4: Define Tool & Dependency Constraints
 LLMs will often try to run shell commands to download packages or run configurations. Tell the agent exactly which commands are allowed and which are prohibited.
-> [!IMPORTANT]
-> **Example Constraints:**
-> - **Allowed:** Always use `uv` package manager (e.g. `uv add react`) for python environments.
-> - **Prohibited:** Never use raw `pip install` commands.
+:::info Example Constraints
+- **Allowed:** Always use `uv` package manager (e.g. `uv add react`) for python environments.
+- **Prohibited:** Never use raw `pip install` commands.
+:::
 
 ### Step 5: Specify Verification Methods
 Tell the agent how to test its changes before ending its turn.

@@ -64,8 +64,9 @@ To build fast, economical, and robust workflows, you must leverage Claude-specif
 ### A. Prompt Caching (Essential for Codebases)
 When building coding agents, you frequently send large files or repo contexts in your prompts. Claude's **Prompt Caching** allows you to cache these static contexts (like system instructions or base codebases) to reduce costs by **85%** and latency by **90%**.
 
-> [!IMPORTANT]
-> To enable caching, add the `cache_control` block to the end of the static content you want to cache (e.g. system instructions or a large file block):
+:::info
+To enable caching, add the `cache_control` block to the end of the static content you want to cache (e.g. system instructions or a large file block):
+:::
 
 ```json
 {
