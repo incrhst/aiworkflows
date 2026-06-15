@@ -1,0 +1,46 @@
+# AI Workflows by Incrementic
+
+This file provides system context and guidelines for LLMs, coding agents, and developer tools working in this repository.
+
+## Repository Overview
+- **Name**: AI Workflows by Incrementic
+- **Website**: https://aiworkflows.vercel.app
+- **Purpose**: A Docusaurus-powered curriculum and guide repository for developers learning local AI workflows, context engineering, and agent orchestration.
+
+---
+
+## Brand Guidelines (Incrementic Stack)
+When modifying components, layouts, or pages, you must adhere to the Incrementic brand guidelines:
+
+- **Typography**:
+  - Headings: `Sora`, system-ui, sans-serif
+  - Body: `Inter`, system-ui, sans-serif
+  - Monospace: `IBM Plex Mono`, monospace
+- **Color Tokens**:
+  - Accent / Primary: `#EA5148` (Incrementic Red)
+  - Neutral / Text: `#4C4E56` (Charcoal)
+  - Dark Mode Background: `#2B2C31` (Ink)
+  - Borders: `#E6E6E8` (Hair)
+  - Light Containers: `#FAFAFA` (Soft)
+- **Preferred Background**: White (`#FFFFFF`) for light mode. Only recolor the logo in Red, Charcoal, or White.
+
+---
+
+## Tech Stack & Architecture
+- **Framework**: Docusaurus 3 (TypeScript / React)
+- **Styling**: Vanilla CSS with Infima theme variables (no Tailwind CSS)
+- **Environment**: Node.js >=20.0 (packaged with npm)
+
+### Important Directories:
+- [`/docs/`](file:///Users/davidbain/aiworkflows/docs/): Primary documentation repository.
+- [`/docs/curriculum/`](file:///Users/davidbain/aiworkflows/docs/curriculum/): Step-by-step developer curriculum (concepts, using skills, creating skills, hermes-tailscale setup, and Claude API guides).
+- [`/src/css/custom.css`](file:///Users/davidbain/aiworkflows/src/css/custom.css): Styling override entries and core brand CSS variables.
+- [`/static/img/`](file:///Users/davidbain/aiworkflows/static/img/): Assets folder containing brand logos and favicons.
+
+---
+
+## Rules of Engagement for Coding Agents
+1. **Plain over Clever**: Say the thing. Do not write overly complicated abstractions or custom libraries where plain code works.
+2. **Strict CSS**: Use variables defined in `custom.css` (`var(--incrementic-red)`, etc.). Do not hardcode HEX codes.
+3. **No Tailwind**: Do not install or use Tailwind utility classes in React components. Stick to Docusaurus class naming conventions and Infima components.
+4. **Verification**: Always run `npm run build` and ensure the static build completes successfully without broken markdown links or TypeScript errors before declaring a task complete.
