@@ -79,6 +79,18 @@ The **Hermes Agent** runs persistently on your server, hosting a dashboard (WebU
    > [!NOTE]
    > Binding to `0.0.0.0` inside your server makes it listen on all interfaces. However, because you do not open port `8080` on your public cloud firewall (e.g., AWS Security Groups or UFW), it will **only** be reachable by devices connected to your encrypted Tailscale network.
 
+3. **Configure API Keys in `config.yaml`**:
+   Hermes looks for providers and key settings in the configuration file located at `~/.hermes/config.yaml`. Open this file and specify Anthropic as your provider:
+   ```yaml
+   provider: anthropic
+   model:
+     default: claude-3-5-sonnet-latest
+   providers:
+     anthropic:
+       api_key: sk-ant-your-anthropic-api-key-here
+   ```
+   *(Alternatively, you can run the interactive setup wizard via `hermes setup` or `hermes model` to input keys directly, or add `ANTHROPIC_API_KEY=sk-ant-...` inside `~/.hermes/.env`).*
+
 ---
 
 ## Step 3: Integrate Claude Code as the Engine
