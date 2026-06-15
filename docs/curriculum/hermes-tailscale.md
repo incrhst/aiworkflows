@@ -119,6 +119,34 @@ Now, from your laptop, tablet, or phone (with Tailscale turned on):
 
 ---
 
+## macOS Gotchas & Setup Notes
+
+If you are setting up your agent server or client on **macOS**, pay attention to the following platform-specific gotchas:
+
+### 1. App Store vs. Homebrew CLI Pathing
+Tailscale on macOS has two main distributions: the Standalone/Homebrew package and the Mac App Store App. 
+* **The Gotcha:** If you install the Mac App Store app, the `tailscale` CLI command is **not** added to your shell `$PATH` automatically. 
+* **The Fix:** If you want to use CLI commands (like `tailscale up` or `tailscale status`), you must manually link the binary from the App Store bundle:
+  ```bash
+  sudo ln -s /Applications/Tailscale.app/Contents/Resources/bin/tailscale /usr/local/bin/tailscale
+  ```
+  *Alternatively, if you installed via Homebrew (`brew install tailscale`), the CLI will be in your path immediately.*
+
+### 2. Network Extension & VPN Profile Approvals
+On macOS, Tailscale runs as a **Network Extension**.
+* **The Gotcha:** During installation or when run for the first time, macOS will show a prompt: *"Tailscale" Would Like to Add VPN Configurations*. 
+* **The Fix:** You **must** click **Allow** and authenticate using your macOS user password. If this popup is dismissed or denied, Tailscale will be stuck in a disconnected state.
+* **Note for Managed Macs:** If you are using a corporate Mac managed by MDM (Mobile Device Management), local extensions might be restricted. Check **System Settings > Privacy & Security > Extensions** to verify.
+
+### 3. MagicDNS Cache Refresh
+* **The Gotcha:** Sometimes, after connecting to your tailnet, macOS fails to resolve `.ts.net` addresses immediately due to DNS caching.
+* **The Fix:** Flush the macOS DNS resolver cache using the following command:
+  ```bash
+  sudo killall -HUP mDNSResponder
+  ```
+
+---
+
 ## Best Practices & Security
 
 > [!WARNING]
