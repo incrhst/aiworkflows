@@ -74,3 +74,25 @@ Once `headroom-ai` is installed and in your shell `PATH`, you can use it to wrap
 ```bash
 headroom wrap claude
 ```
+
+---
+
+## macOS Tip: Launch TextEdit from the Command Line
+
+If you are on macOS and want to quickly open or edit a file (like a config, log, or draft markdown file) in **TextEdit** without leaving your terminal, use the native macOS `open` utility:
+
+* **Open a file in the default text editor (typically TextEdit):**
+  ```bash
+  open -e filename.txt
+  ```
+  *(The `-e` flag stands for "editor").*
+
+* **Open a file specifically in the TextEdit application:**
+  ```bash
+  open -a TextEdit filename.txt
+  ```
+
+* **Open a file in plain text mode (ignoring rich-text/RTF formatting):**
+  ```bash
+  open -t filename.txt
+  ```
