@@ -9,11 +9,14 @@
    */
   
   import type { ApiFromModules, FilterApi, FunctionReference } from "convex/server";
-  import type * as client from "../client.js";
+  import type * as ai from "../ai.js";
+import type * as captures from "../captures.js";
+import type * as client from "../client.js";
 import type * as crons from "../crons.js";
 import type * as decisions from "../decisions.js";
 import type * as email from "../email.js";
 import type * as lib_changes from "../lib/changes.js";
+import type * as lib_drafting from "../lib/drafting.js";
 import type * as lib_nudges from "../lib/nudges.js";
 import type * as lib_tokens from "../lib/tokens.js";
 import type * as lib_workingDays from "../lib/workingDays.js";
@@ -31,11 +34,14 @@ import type * as team from "../team.js";
    * ```
    */
   declare const fullApi: ApiFromModules<{
-    "client": typeof client,
+    "ai": typeof ai,
+"captures": typeof captures,
+"client": typeof client,
 "crons": typeof crons,
 "decisions": typeof decisions,
 "email": typeof email,
 "lib/changes": typeof lib_changes,
+"lib/drafting": typeof lib_drafting,
 "lib/nudges": typeof lib_nudges,
 "lib/tokens": typeof lib_tokens,
 "lib/workingDays": typeof lib_workingDays,

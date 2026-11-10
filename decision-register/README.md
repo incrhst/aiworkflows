@@ -26,11 +26,24 @@ This folder is self-contained so it can move to its own repository later
   needs personal follow-up. The driver role can be handed over at any time.
 - **Email through Resend.** Without `RESEND_API_KEY`, emails are printed to the Convex logs.
 
+## Slice 2: capture and AI drafting
+
+- On a project page, the driver pastes WhatsApp messages, an email or meeting notes.
+- Claude (`convex/ai.ts`) drafts the decision: summary, why, what it changes, and the
+  sentence it rests on. Structured outputs force the shape. The draft refers to scope items
+  as S1, S2…, and `convex/lib/drafting.ts` maps them back and checks the change against
+  current scope. A change that doesn't hold up is dropped, and the driver is told why.
+- If the text asks for something outside current scope, the draft is flagged:
+  "This looks like new scope. What is the trade?" The AI never invents a trade.
+- The driver reviews and edits the draft in the normal decision form, then saves it.
+  Nothing reaches the client until the driver sends it.
+- Without `ANTHROPIC_API_KEY`, or if the AI declines or fails, the capture says so and the
+  driver writes the decision by hand.
+- Requests use refusal fallbacks (`fallbacks: "default"`): if a safety classifier declines,
+  the API retries on a fallback model in the same call.
+
 ## Next slices
 
-2. **Capture.** Paste WhatsApp messages or meeting notes. AI drafts the entry and checks it
-   against the baseline ("This looks like new scope. What is the trade?"). The driver reviews
-   and sends.
 3. **Forwarding address.** One inbound address per project (Resend inbound), feeding the
    same draft-and-review flow.
 4. **MCP connector.** "Log this as a decision" from the team's AI tools.
@@ -47,6 +60,7 @@ This folder is self-contained so it can move to its own repository later
 - **Convex** (`convex/`): database, functions and the hourly nudge job (`crons.ts`).
 - **Next.js on Vercel** (`app/`): team pages and client pages.
 - **Resend**: outbound email (`convex/email.ts`).
+- **Claude API** (`@anthropic-ai/sdk`): drafting decisions from captured text (`convex/ai.ts`).
 
 Business rules sit in plain TypeScript in `convex/lib/` (`changes.ts`, `nudges.ts`,
 `workingDays.ts`), so they can be tested without a backend.

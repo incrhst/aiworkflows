@@ -6,6 +6,7 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import type { Doc, Id } from "@/convex/_generated/dataModel";
 import { DecisionForm } from "@/components/DecisionForm";
+import { CapturePanel } from "@/components/CapturePanel";
 import { ScopeTable } from "@/components/ScopeTable";
 import { ChangePill, describeChange } from "@/components/ChangeSummary";
 import { errorMessage } from "@/components/errors";
@@ -76,6 +77,14 @@ export default function ProjectPage() {
         baselineDate={project.baselineDate}
         currentDate={project.currentDate}
         decisionLabel={decisionLabel}
+      />
+
+      <CapturePanel
+        projectId={projectId}
+        scope={scopeRefs}
+        currentDate={project.currentDate}
+        team={team}
+        driverId={project.driverId}
       />
 
       <div className="row spread">

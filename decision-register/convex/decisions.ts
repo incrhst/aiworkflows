@@ -22,10 +22,15 @@ function checkText(summary: string, why: string) {
 
 /** The driver logs a new decision. It starts as a draft. */
 export const createDraft = mutation({
-  args: { projectId: v.id("projects"), ...versionFields },
-  handler: async (ctx, { projectId, ...fields }) => {
+  args: { projectId: v.id("projects"), captureId: v.optional(v.id("captures")), ...versionFields },
+  handler: async (ctx, { projectId, captureId, ...fields }) => {
     const project = await ctx.db.get(projectId);
     if (!project) throw new ConvexError("Project not found.");
+    const capture = captureId ? await ctx.db.get(captureId) : null;
+    if (captureId && (!capture || capture.projectId !== projectId)) {
+      throw new ConvexError("Capture not found for this project.");
+    }
+    if (capture?.status === "logged") throw new ConvexError("This capture is already logged as a decision.");
     checkText(fields.summary, fields.why);
     const scope = toScopeState(await loadScope(ctx, projectId));
     const problems = validateChange(fields.change, scope, project.currentDate);
@@ -42,8 +47,10 @@ export const createDraft = mutation({
       clientToken: newToken(),
       nudgeCount: 0,
       needsPersonalFollowUp: false,
+      captureId,
       createdAt: now,
     });
+    if (captureId) await ctx.db.patch(captureId, { status: "logged", decisionId });
     await ctx.db.insert("decisionVersions", {
       decisionId,
       version: 1,

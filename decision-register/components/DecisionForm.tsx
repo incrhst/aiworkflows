@@ -27,6 +27,7 @@ export function DecisionForm({
   authors,
   defaultAuthorId,
   initial,
+  notice,
   submitLabel,
   onSubmit,
   onCancel,
@@ -35,7 +36,10 @@ export function DecisionForm({
   currentDate: string;
   authors: { _id: Id<"teamMembers">; name: string }[];
   defaultAuthorId: Id<"teamMembers">;
-  initial?: Omit<DecisionInput, "authorId">;
+  // `change` is optional so an AI draft without a valid change leaves it unset.
+  initial?: Omit<DecisionInput, "authorId" | "change"> & { change?: Change };
+  /** Shown above the form, e.g. the new scope flag on an AI draft. */
+  notice?: React.ReactNode;
   submitLabel: string;
   onSubmit: (input: DecisionInput) => Promise<void>;
   onCancel?: () => void;
@@ -104,6 +108,7 @@ export function DecisionForm({
 
   return (
     <form className="card" onSubmit={submit}>
+      {notice}
       <label htmlFor="summary">Summary: one line on what was decided</label>
       <input id="summary" value={summary} onChange={(e) => setSummary(e.target.value)} required />
 

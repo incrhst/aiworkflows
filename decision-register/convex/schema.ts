@@ -76,6 +76,8 @@ export default defineSchema({
     lastNudgeAt: v.optional(v.number()),
     needsPersonalFollowUp: v.boolean(),
     agreedAt: v.optional(v.number()),
+    // Set when the decision was logged from a capture.
+    captureId: v.optional(v.id("captures")),
     createdAt: v.number(),
   })
     .index("by_project", ["projectId"])
@@ -104,6 +106,39 @@ export default defineSchema({
     agreementWording: v.optional(v.string()),
     respondedAt: v.number(),
   }).index("by_decision", ["decisionId"]),
+
+  // Raw text captured from a channel, and the AI draft made from it.
+  captures: defineTable({
+    projectId: v.id("projects"),
+    channel: v.union(v.literal("email"), v.literal("whatsapp"), v.literal("meeting"), v.literal("other")),
+    text: v.string(),
+    link: v.optional(v.string()),
+    capturedBy: v.id("teamMembers"),
+    status: v.union(
+      v.literal("drafting"), // waiting for the AI draft
+      v.literal("ready"), // draft ready for the driver to review
+      v.literal("failed"), // AI could not draft; the driver writes it by hand
+      v.literal("logged"), // turned into a decision
+      v.literal("dismissed"),
+    ),
+    draft: v.optional(
+      v.object({
+        isDecision: v.boolean(),
+        summary: v.string(),
+        why: v.string(),
+        change: v.optional(changeValidator),
+        optionsConsidered: v.optional(v.string()),
+        sourceExcerpt: v.string(),
+        newScopeFlag: v.boolean(),
+        newScopeItems: v.array(v.string()),
+        checks: v.array(v.string()),
+        model: v.string(),
+      }),
+    ),
+    error: v.optional(v.string()),
+    decisionId: v.optional(v.id("decisions")),
+    createdAt: v.number(),
+  }).index("by_project", ["projectId", "createdAt"]),
 
   // Audit trail: sends, nudges, driver handovers, responses.
   activity: defineTable({
