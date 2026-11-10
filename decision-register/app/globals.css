@@ -1,0 +1,87 @@
+:root {
+  --bg: #fafaf8;
+  --surface: #ffffff;
+  --text: #1c1c1a;
+  --muted: #6b6b66;
+  --border: #e3e2dc;
+  --accent: #2f5bd3;
+  --warn-bg: #fff4e0;
+  --warn: #9a5b00;
+  --ok: #1f7a43;
+  --bad: #b3261e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161615;
+    --surface: #1f1f1d;
+    --text: #ecebe6;
+    --muted: #a3a29b;
+    --border: #34332f;
+    --accent: #7c9cff;
+    --warn-bg: #3a2c12;
+    --warn: #f3b75a;
+    --ok: #5fcf8a;
+    --bad: #ff8a80;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+a { color: var(--accent); }
+.page { max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+h2 { font-size: 1.15rem; margin: 32px 0 12px; }
+.muted { color: var(--muted); }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.card.flagged { border-left: 4px solid var(--warn); }
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.spread { justify-content: space-between; }
+.pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.pill.change { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
+.pill.ok { color: var(--ok); }
+.pill.bad { color: var(--bad); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-weight: 600; font-size: 0.85rem; color: var(--muted); }
+.struck { text-decoration: line-through; color: var(--muted); }
+label { display: block; font-weight: 600; font-size: 0.9rem; margin: 12px 0 4px; }
+input, textarea, select {
+  width: 100%;
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+textarea { min-height: 80px; }
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button:disabled { opacity: 0.5; cursor: default; }
+.error { color: var(--bad); margin: 8px 0; }
+.stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.9rem; }
